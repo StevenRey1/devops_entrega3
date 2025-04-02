@@ -9,6 +9,12 @@ import datetime
 
 blacklist_schema = BlacklistSchema()
 
+class HealthCheckResource(Resource):
+    def get(self):
+        return {"status": "ok"}, 200
+
+
+
 class BlacklistResource(Resource):
     @jwt_required()
     def post(self):

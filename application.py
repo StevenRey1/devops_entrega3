@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, create_access_token
-from resources.blacklist import BlacklistResource, BlacklistCheckResource
+from resources.blacklist import BlacklistResource, BlacklistCheckResource, HealthCheckResource
 from config import config_by_name, key
 from models import db
 import uuid
@@ -25,6 +25,7 @@ with application.app_context():
 
 api.add_resource(BlacklistResource, '/blacklists')
 api.add_resource(BlacklistCheckResource, '/blacklists/<string:email>')
+api.add_resource(HealthCheckResource, '/health')
 
 @application.route("/token", methods=["GET"])  # Usualmente es POST, pero GET es útil para probar.
 def create_token():
