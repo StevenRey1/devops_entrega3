@@ -14,6 +14,9 @@ phases:
 
   build:
     commands:
+      - echo "Seteando PYTHONPATH"
+      - export PYTHONPATH="${PYTHONPATH}:$(pwd)/blacklist/src"
+      
       - echo "Ejecutando pruebas con pytest"
       - pytest blacklist/src/tests --maxfail=1 --disable-warnings --tb=short
       
