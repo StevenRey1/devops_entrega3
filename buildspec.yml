@@ -20,8 +20,9 @@ phases:
       - echo "Ejecutando pruebas con unittest"
       - python -m unittest discover -s blacklist/src/tests
       
-      - echo "Empaquetando solo archivos del repositorio"
-      - zip -r app.zip . -x "*.git*" "*__pycache__*" "*.pyc" "*.pyo" "*.dist-info*" "*.egg-info*" ".venv*" "package*" "venv*" "build*" "*.log"
+      - echo "Empaquetando solo archivos dentro de src"
+      - cd blacklist/src
+      - zip -r ../../app.zip . -x "*.git*" "*__pycache__*" "*.pyc" "*.pyo" "*.dist-info*" "*.egg-info*" ".venv*" "package*" "venv*" "build*" "*.log"
 artifacts:
   files:
     - app.zip
