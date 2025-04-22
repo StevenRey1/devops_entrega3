@@ -9,6 +9,7 @@ phases:
     commands:
       - echo "Instalando dependencias para validar"
       - pip install -r blacklist/src/requirements.txt
+      - pip install pytest
 
 
   build:
