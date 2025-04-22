@@ -8,7 +8,7 @@ phases:
   pre_build:
     commands:
       - echo "Instalando dependencias para validar"
-      - pip install -r blacklist/requirements.txt
+      - pip install -r blacklist/src/requirements.txt
 
 
   build:
