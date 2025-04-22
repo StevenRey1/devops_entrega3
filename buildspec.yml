@@ -17,8 +17,8 @@ phases:
       - echo "Seteando PYTHONPATH"
       - export PYTHONPATH="${PYTHONPATH}:$(pwd)/blacklist/src"
       
-      - echo "Ejecutando pruebas con pytest"
-      - pytest blacklist/src/tests --maxfail=1 --disable-warnings --tb=short
+      - echo "Ejecutando pruebas con unittest"
+      - python -m unittest discover -s blacklist/src/tests
       
       - echo "Empaquetando solo archivos del repositorio"
       - zip -r app.zip . -x "*.git*" "*__pycache__*" "*.pyc" "*.pyo" "*.dist-info*" "*.egg-info*" ".venv*" "package*" "venv*" "build*" "*.log"
