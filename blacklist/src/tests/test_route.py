@@ -20,7 +20,8 @@ class TestAPI(unittest.TestCase):
 
     def test_health_check(self):
         response = self.client.get('/health')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
+        
         self.assertEqual(response.get_json(), {"status": "OK"})
 
     @patch('routes.db.session.add')
