@@ -1,13 +1,11 @@
-FROM alpine:3.14
-
-RUN apk add py3-pip \
-    && pip install --upgrade pip
+FROM python:3.11-slim
 
 WORKDIR /app
 
 COPY . /app/
 
-RUN pip install -r blacklist/src/requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r blacklist/src/requirements.txt
 
 EXPOSE 5000
 
