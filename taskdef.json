@@ -1,26 +1,31 @@
 {
-    "executionRoleArn": "arn:aws:iam::904450061599:role/ecsTaskExecutionRole",
-    "containerDefinitions": [
-      {
-        "portMappings": [
-          {
-            "hostPort": 5000,
-            "protocol": "tcp",
-            "containerPort": 5000
-          }
-        ],
-
-        "image": "<IMAGE1_NAME>",
-        "essential": true,
-        "name": "Container-app-python"
-      }
-    ],
-
-    "requiresCompatibilities": [
-      "FARGATE"
-    ],
-    "networkMode": "awsvpc",
-    "cpu": "512",
-    "memory": "1024",
-    "family": "Task-app-python"
-  }
+  "executionRoleArn": "arn:aws:iam::904450061599:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "Container-app-python",
+      "image": "<IMAGE1_NAME>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 5000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "RDS_USERNAME", "value": "postgres" },
+        { "name": "RDS_PASSWORD", "value": "postgres" },
+        { "name": "RDS_HOSTNAME", "value": "database-2.ck3aoeiium3w.us-east-1.rds.amazonaws.com" },
+        { "name": "RDS_PORT", "value": "5432" },
+        { "name": "RDS_DB_NAME", "value": "taller3" }
+      ]
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "memory": "1024",
+  "family": "Task-app-python"
+}
