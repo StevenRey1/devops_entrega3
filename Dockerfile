@@ -10,3 +10,15 @@ RUN pip install --upgrade pip && \
 EXPOSE 5000
 
 CMD ["python3", "blacklist/src/application.py"]
+
+##Confguración New Relic
+RUN pip install newrelic
+ENV NEW_RELIC_APP_NAME="entrega-blacklist"
+ENV NEW_RELIC_LOG=stdout
+ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
+#INGEST_License
+ENV NEW_RELIC_LICENSE_KEY=d89ebd76b120ed124a2fb68e1ab8a469FFFFNRAL
+ENV NEW_RELIC_LOG_LEVEL=info
+# etc.
+
+ENTRYPOINT ["newrelic-admin", "run-program"]
