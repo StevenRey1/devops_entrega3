@@ -3,7 +3,6 @@ FROM python:3.11-slim
 WORKDIR /app
 
 COPY . /app/
-COPY newrelic.ini /app/newrelic.ini
 
 RUN pip install --upgrade pip && \
     pip install -r blacklist/src/requirements.txt && \
@@ -11,8 +10,7 @@ RUN pip install --upgrade pip && \
 
 EXPOSE 5000
 
-# Configuración New Relic
-ENV NEW_RELIC_CONFIG_FILE=/app/newrelic.ini
+# Configuración New Relic SOLO por variables
 ENV NEW_RELIC_APP_NAME="entrega-blacklist"
 ENV NEW_RELIC_LOG=stdout
 ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
